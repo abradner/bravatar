@@ -5,7 +5,7 @@ FROM ruby:2.4-onbuild
 #         postgresql-client \
 #     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY Gemfile* ./
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 COPY . .

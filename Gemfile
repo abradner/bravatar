@@ -17,7 +17,9 @@ gem 'puma', '~> 3.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.11'
+gem 'jwt', '~> 1.5'
+gem 'simple_command' # doesn't follow semver
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -29,7 +31,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
-  gem 'rspec', '~> 3.5'
+  gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', '~> 0.47'
 end
 
@@ -47,7 +49,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Things I think I'll need
 
-# gem 'devise', '~> 4.2' # the defacto standard. not a perfect fit but easy to customise
 # gem 'pundit' # my old goto - cancan - seems to be abandoned 
 
 # gem 'carrierwave' # paperclip wants to use imagemagick. we can make do with minimagick
