@@ -47,7 +47,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Things I think I'll need
 
-gem 'devise', '~> 4.2' # the defacto standard. not a perfect fit but easy to customise
+# gem 'devise', '~> 4.2' # the defacto standard. not a perfect fit but easy to customise
 # gem 'pundit' # my old goto - cancan - seems to be abandoned 
 
 # gem 'carrierwave' # paperclip wants to use imagemagick. we can make do with minimagick
