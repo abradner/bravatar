@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it 'allows users to have one email' do
-    u = User.create!(primary_email: UserEmail.new(email: 'hello@hooli.xyz'), password: 'blah')
+    u = User.create!(primary_email: UserEmail.new(email: 'hello@hooli.xyz', primary: true), password: 'blah')
     expect(u.primary_email.email).to eq 'hello@hooli.xyz'
   end
 
   it 'allows users to have multiple emails' do
-    u = User.create!(primary_email: UserEmail.new(email: 'hello@hooli.xyz'), password: 'blah')
+    u = User.create!(primary_email: UserEmail.new(email: 'hello@hooli.xyz', primary: true), password: 'blah')
     u.add_email 'abc@hooli.xyz'
     u.save
 
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
     u = User.new(password: 'blah')
     expect(u.valid?).to be false
 
-    u.primary_email = UserEmail.new(email: 'hello@hooli.xyz')
+    u.primary_email = UserEmail.new(email: 'hello@hooli.xyz', primary: true)
 
     expect(u.valid?).to be true
   end

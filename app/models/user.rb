@@ -1,9 +1,14 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :user_emails,  autosave: true
+  has_many :user_emails,  autosave: true, dependent: :destroy
   has_one :primary_email, -> { where primary: true }, class_name: 'UserEmail'
 
   validates :primary_email, presence: true
+
+  def self.find_by_any_email(email)
+    ue = UserEmail.find_by(email: email)
+    return ue.user if ue.present?
+  end
 
   def add_email(email, opts = {})
     primary = opts[:primary] || false # for clarity. logically zero sum
