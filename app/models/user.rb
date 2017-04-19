@@ -3,7 +3,12 @@ class User < ApplicationRecord
   has_many :user_emails,  autosave: true, dependent: :destroy
   has_one :primary_email, -> { where primary: true }, class_name: 'UserEmail'
 
-  validates :primary_email, presence: true
+  validate do
+    errors.add(:base, "Email required") and next unless primary_email.present?
+    errors.add(:base, primary_email.errors.to_a) unless primary_email.valid?
+  end
+
+  validates :name, presence: true
 
   def self.find_by_any_email(email)
     ue = UserEmail.find_by(email: email)
